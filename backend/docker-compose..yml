@@ -1,0 +1,23 @@
+version: '3.8'
+import envfile: .env
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_QueueLess
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge
