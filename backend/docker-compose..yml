@@ -1,5 +1,4 @@
 version: '3.8'
-import envfile: .env
 
 services:
   mongodb:
